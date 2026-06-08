@@ -1,8 +1,8 @@
 package com.tenor.android.core.model.impl;
 
 
-import android.support.annotation.FloatRange;
-import android.support.annotation.NonNull;
+import androidx.annotation.FloatRange;
+import androidx.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 import com.tenor.android.core.util.AbstractListUtils;

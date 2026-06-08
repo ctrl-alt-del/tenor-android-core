@@ -1,8 +1,8 @@
 package com.tenor.android.core.network;
 
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * Callback for asynchronous anon id API request is done

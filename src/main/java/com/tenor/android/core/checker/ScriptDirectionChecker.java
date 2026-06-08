@@ -1,8 +1,8 @@
 package com.tenor.android.core.checker;
 
 import android.content.Context;
-import android.support.annotation.IntDef;
-import android.support.annotation.Nullable;
+import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
 
 import com.tenor.android.core.R;
 
@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class ScriptDirectionChecker {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({UNSPECIFIED, LEFT_TO_RIGHT, RIGHT_TO_LEFT})
     public @interface Value {
     }

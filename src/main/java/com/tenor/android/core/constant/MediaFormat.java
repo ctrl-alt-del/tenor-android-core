@@ -1,6 +1,6 @@
 package com.tenor.android.core.constant;
 
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class MediaFormat {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @StringDef({ALL, GIF, JPEG, JPG, MP4, PNG})
     public @interface Value {
     }

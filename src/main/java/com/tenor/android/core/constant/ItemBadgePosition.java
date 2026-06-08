@@ -1,7 +1,7 @@
 package com.tenor.android.core.constant;
 
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
 
 import com.tenor.android.core.model.impl.ItemBadge;
 
@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class ItemBadgePosition {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({NONE,
             INTERIOR_TOP_LEFT, INTERIOR_TOP_RIGHT,
             INTERIOR_BOTTOM_RIGHT, INTERIOR_BOTTOM_LEFT,

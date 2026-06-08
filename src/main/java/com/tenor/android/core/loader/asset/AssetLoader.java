@@ -1,8 +1,8 @@
 package com.tenor.android.core.loader.asset;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -52,7 +52,7 @@ public class AssetLoader {
             return;
         }
 
-        Glide.with(weakRef.get()).load(bytes).asGif().diskCacheStrategy(DiskCacheStrategy.ALL)
+        Glide.with(weakRef.get()).asGif().load(bytes).diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
     }
 

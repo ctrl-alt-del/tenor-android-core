@@ -1,19 +1,19 @@
 package com.tenor.android.core.loader;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.widget.ImageView;
 
-import com.bumptech.glide.GenericRequestBuilder;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.tenor.android.core.model.impl.Media;
 
 public class GlideLoader {
 
-    public static GenericRequestBuilder applyDimens(@NonNull GenericRequestBuilder requestBuilder,
-                                                    @NonNull GlideTaskParams payload) {
+    public static RequestBuilder<Drawable> applyDimens(@NonNull RequestBuilder<Drawable> requestBuilder,
+                                                        @NonNull GlideTaskParams payload) {
         final Media media = payload.getMedia();
         if (media != null) {
             requestBuilder.override(media.getWidth(), media.getHeight());
@@ -21,7 +21,7 @@ public class GlideLoader {
         return requestBuilder;
     }
 
-    public static <T extends ImageView> void load(@NonNull final GenericRequestBuilder requestBuilder,
+    public static <T extends ImageView> void load(@NonNull final RequestBuilder<Drawable> requestBuilder,
                                                   @NonNull final GlideTaskParams<T> payload) {
 
         if (payload.isThumbnail()) {
@@ -29,21 +29,24 @@ public class GlideLoader {
         }
 
         requestBuilder.placeholder(payload.getPlaceholder())
-                .into(new GlideDrawableImageViewTarget(payload.getTarget()) {
+                .into(new CustomViewTarget<ImageView, Drawable>(payload.getTarget()) {
                     @Override
-                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                    protected void onResourceCleared(@Nullable Drawable placeholder) {
+                        payload.getTarget().setImageDrawable(placeholder);
+                    }
+
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
                         if (payload.getCurrentRetry() < payload.getMaxRetry()) {
                             payload.incrementCurrentRetry();
                             load(requestBuilder, payload);
                         } else {
-                            super.onLoadFailed(e, errorDrawable);
                             payload.getListener().failure(payload.getTarget(), errorDrawable);
                         }
                     }
 
                     @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
-                        super.onResourceReady(resource, animation);
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                         payload.getListener().success(payload.getTarget(), resource);
                     }
                 });

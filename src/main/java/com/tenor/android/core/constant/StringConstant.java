@@ -5,8 +5,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.tenor.android.core.util.AbstractListUtils;
@@ -177,7 +177,7 @@ public abstract class StringConstant {
         }
 
         if (separator == null) {
-            join(words, EMPTY, joinable);
+            return join(words, EMPTY, joinable);
         }
 
         Iterator<T> it = words.iterator();
@@ -250,6 +250,9 @@ public abstract class StringConstant {
         }
 
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null) {
+            return false;
+        }
         clipboard.setPrimaryClip(ClipData.newPlainText(label, content));
         return true;
     }

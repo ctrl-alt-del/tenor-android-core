@@ -3,11 +3,11 @@ package com.tenor.android.core.util;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.DimenRes;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.DimenRes;
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
@@ -225,6 +225,9 @@ public abstract class AbstractUIUtils {
      */
     public static boolean hasOnScreenSystemBar(@NonNull final Context context) {
         final WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (wm == null) {
+            return false;
+        }
         final Display display = wm.getDefaultDisplay();
         int displayHeight = 0;
         try {

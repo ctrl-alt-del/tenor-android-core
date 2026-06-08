@@ -2,9 +2,9 @@ package com.tenor.android.core.measurable;
 
 
 import android.graphics.Rect;
-import android.support.annotation.FloatRange;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.FloatRange;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.tenor.android.core.util.AbstractUIUtils;

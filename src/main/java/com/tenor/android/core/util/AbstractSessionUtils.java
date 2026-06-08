@@ -2,8 +2,8 @@ package com.tenor.android.core.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.tenor.android.core.constant.StringConstant;
@@ -14,11 +14,7 @@ import com.tenor.android.core.constant.StringConstant;
 public abstract class AbstractSessionUtils {
     private static final String DEVICE_PREF = "device_preferences";
 
-    /**
-     * Use {@link #KEY_ANON_ID} instead
-     *
-     * @deprecated
-     */
+    @Deprecated
     private static final String KEY_KEYBOARD_ID = "KEY_KEYBOARD_ID";
     private static final String KEY_ANON_ID = "KEY_ANON_ID";
     private static final String KEY_ANDROID_ADVERTISE_ID = "KEY_ANDROID_ADVERTISE_ID";

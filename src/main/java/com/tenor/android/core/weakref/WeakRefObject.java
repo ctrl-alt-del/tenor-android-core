@@ -1,7 +1,7 @@
 package com.tenor.android.core.weakref;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.tenor.android.core.util.AbstractWeakReferenceUtils;
 

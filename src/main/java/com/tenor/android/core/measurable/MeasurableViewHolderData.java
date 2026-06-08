@@ -1,10 +1,10 @@
 package com.tenor.android.core.measurable;
 
 import android.content.Context;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.tenor.android.core.constant.ItemVisualPosition;

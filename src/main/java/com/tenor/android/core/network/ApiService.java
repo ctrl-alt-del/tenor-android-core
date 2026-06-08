@@ -2,8 +2,8 @@ package com.tenor.android.core.network;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;

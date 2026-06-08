@@ -1,6 +1,6 @@
 package com.tenor.android.core.constant;
 
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class MediaCollectionFormat {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @StringDef({GIF, GIF_TINY, GIF_MEDIUM, GIF_NANO,
             MP4, MP4_TINY, MP4_NANO, MP4_LOOPED,
             WEBM, WEBM_TINY, WEBM_NANO

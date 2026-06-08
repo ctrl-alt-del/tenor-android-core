@@ -1,13 +1,13 @@
 package com.tenor.android.core.constant;
 
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public class MediaFilter {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @StringDef({MINIMAL, BASIC})
     public @interface Value {
     }
