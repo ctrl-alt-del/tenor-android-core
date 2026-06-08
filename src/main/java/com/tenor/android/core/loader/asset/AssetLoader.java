@@ -52,7 +52,7 @@ public class AssetLoader {
             return;
         }
 
-        Glide.with(weakRef.get()).load(bytes).asGif().diskCacheStrategy(DiskCacheStrategy.ALL)
+        Glide.with(weakRef.get()).asGif().load(bytes).diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
     }
 
