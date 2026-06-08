@@ -1,6 +1,6 @@
 package com.tenor.android.core.network.constant;
 
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

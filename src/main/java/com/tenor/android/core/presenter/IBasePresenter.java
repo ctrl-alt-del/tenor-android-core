@@ -1,6 +1,6 @@
 package com.tenor.android.core.presenter;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.tenor.android.core.view.IBaseView;
 

@@ -1,6 +1,6 @@
 package com.tenor.android.core.response.impl;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.tenor.android.core.constant.StringConstant;

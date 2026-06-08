@@ -1,8 +1,8 @@
 package com.tenor.android.core.network;
 
 
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
 
 import com.tenor.android.core.constant.AspectRatioRange;
 import com.tenor.android.core.constant.MediaFilter;

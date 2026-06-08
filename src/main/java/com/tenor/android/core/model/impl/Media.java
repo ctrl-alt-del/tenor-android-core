@@ -1,6 +1,6 @@
 package com.tenor.android.core.model.impl;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.tenor.android.core.constant.StringConstant;
 

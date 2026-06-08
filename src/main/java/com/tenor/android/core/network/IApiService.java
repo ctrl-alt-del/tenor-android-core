@@ -1,7 +1,7 @@
 package com.tenor.android.core.network;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public interface IApiService<T> {
 

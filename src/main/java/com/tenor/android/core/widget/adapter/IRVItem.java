@@ -1,6 +1,6 @@
 package com.tenor.android.core.widget.adapter;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Interface for all recycler view items

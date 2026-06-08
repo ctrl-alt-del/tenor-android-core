@@ -1,6 +1,6 @@
 package com.tenor.android.core.measurable;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  *

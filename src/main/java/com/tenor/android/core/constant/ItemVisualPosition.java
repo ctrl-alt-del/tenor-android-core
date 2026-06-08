@@ -1,9 +1,9 @@
 package com.tenor.android.core.constant;
 
 import android.content.Context;
-import android.support.annotation.IntRange;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
+import androidx.annotation.IntRange;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringDef;
 
 import com.tenor.android.core.util.AbstractUIUtils;
 

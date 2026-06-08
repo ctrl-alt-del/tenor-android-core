@@ -2,9 +2,10 @@ package com.tenor.android.core.network;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.util.ArrayMap;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.collection.ArrayMap;
+
 import android.text.TextUtils;
 
 import com.tenor.android.core.constant.ScreenDensity;
