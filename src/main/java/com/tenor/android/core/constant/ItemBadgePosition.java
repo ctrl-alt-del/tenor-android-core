@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class ItemBadgePosition {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({NONE,
             INTERIOR_TOP_LEFT, INTERIOR_TOP_RIGHT,
             INTERIOR_BOTTOM_RIGHT, INTERIOR_BOTTOM_LEFT,

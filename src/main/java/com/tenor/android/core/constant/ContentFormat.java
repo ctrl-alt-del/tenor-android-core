@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class ContentFormat {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @StringDef({IMAGE_GIF, IMAGE_MP4, IMAGE_JPEG, IMAGE_PNG})
     public @interface Value {
     }

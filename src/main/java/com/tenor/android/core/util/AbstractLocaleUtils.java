@@ -108,12 +108,17 @@ public abstract class AbstractLocaleUtils {
             return false;
         }
 
-        if (AbstractNetworkUtils.isWifiConnected(context)
-                && telephonyManager.getPhoneType() != TelephonyManager.NETWORK_TYPE_CDMA) {
-            return ISO_US.equals(telephonyManager.getNetworkCountryIso());
-        }
+        try {
+            if (AbstractNetworkUtils.isWifiConnected(context)
+                    && telephonyManager.getPhoneType() != TelephonyManager.NETWORK_TYPE_CDMA) {
+                return ISO_US.equals(telephonyManager.getNetworkCountryIso());
+            }
 
-        return telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT
-                && ISO_US.equals(telephonyManager.getSimCountryIso());
+            return telephonyManager.getSimState() != TelephonyManager.SIM_STATE_ABSENT
+                    && ISO_US.equals(telephonyManager.getSimCountryIso());
+        } catch (Throwable ignored) {
+            // no "android.permission.READ_PHONE_STATE" permission
+            return false;
+        }
     }
 }

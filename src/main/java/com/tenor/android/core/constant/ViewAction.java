@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class ViewAction {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @StringDef({VIEW, SHARE, TAP})
     public @interface Value {
     }

@@ -102,6 +102,9 @@ public class ApiClient {
         final ArrayMap<String, String> map = new ArrayMap<>(4);
 
         // API Key
+        if (sApiService == null) {
+            return new ArrayMap<>(0);
+        }
         map.put("key", sApiService.getApiKey());
 
         /*

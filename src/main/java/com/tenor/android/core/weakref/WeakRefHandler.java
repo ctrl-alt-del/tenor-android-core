@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
 /**
  * {@link Handler} with a {@link WeakReference} on its calling context
  * <p/>
- * This is intended to avoid unintentional leakage on {@link Activity} and {@link android.app.Fragment}
+ * This is intended to avoid unintentional leakage on {@link Activity} and {@link androidx.fragment.app.Fragment}
  */
 public class WeakRefHandler<CTX> extends Handler implements IWeakRefObject<CTX> {
 

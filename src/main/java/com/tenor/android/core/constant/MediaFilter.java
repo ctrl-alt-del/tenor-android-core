@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class MediaFilter {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @StringDef({MINIMAL, BASIC})
     public @interface Value {
     }

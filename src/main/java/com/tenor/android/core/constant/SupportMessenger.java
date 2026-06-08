@@ -11,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class SupportMessenger {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @StringDef({NONE,
             FB_MESSENGER,
             WHATSAPP,

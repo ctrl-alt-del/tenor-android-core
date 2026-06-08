@@ -177,7 +177,7 @@ public abstract class StringConstant {
         }
 
         if (separator == null) {
-            join(words, EMPTY, joinable);
+            return join(words, EMPTY, joinable);
         }
 
         Iterator<T> it = words.iterator();
@@ -250,6 +250,9 @@ public abstract class StringConstant {
         }
 
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null) {
+            return false;
+        }
         clipboard.setPrimaryClip(ClipData.newPlainText(label, content));
         return true;
     }

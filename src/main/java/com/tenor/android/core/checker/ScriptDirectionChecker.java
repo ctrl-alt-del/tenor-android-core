@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class ScriptDirectionChecker {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({UNSPECIFIED, LEFT_TO_RIGHT, RIGHT_TO_LEFT})
     public @interface Value {
     }

@@ -95,7 +95,8 @@ public class MeasurableOnScrollListener extends RecyclerView.OnScrollListener {
                         holder.flush();
                     }
 
-                    if (AbstractLayoutManagerUtils.getOrientation(recyclerView.getLayoutManager())
+                    if (recyclerView.getLayoutManager() != null
+                            && AbstractLayoutManagerUtils.getOrientation(recyclerView.getLayoutManager())
                             == OrientationHelper.HORIZONTAL) {
                         AbstractLayoutManagerUtils.setReverseLayout(recyclerView.getLayoutManager(),
                                 state == ScriptDirectionChecker.RIGHT_TO_LEFT);

@@ -12,7 +12,7 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PACKAGE;
 import static java.lang.annotation.ElementType.PARAMETER;
 
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.SOURCE)
 @StringDef({Protocols.HTTP, Protocols.HTTPS})
 @Target({METHOD, PARAMETER, FIELD, ANNOTATION_TYPE, PACKAGE})
 public @interface Protocol {

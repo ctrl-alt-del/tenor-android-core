@@ -225,6 +225,9 @@ public abstract class AbstractUIUtils {
      */
     public static boolean hasOnScreenSystemBar(@NonNull final Context context) {
         final WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (wm == null) {
+            return false;
+        }
         final Display display = wm.getDefaultDisplay();
         int displayHeight = 0;
         try {

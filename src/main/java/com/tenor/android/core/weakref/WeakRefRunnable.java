@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference;
 /**
  * {@link Runnable} with a {@link WeakReference} on its calling context
  * <p/>
- * This is intended to avoid unintentional leakage on {@link Activity} and {@link android.app.Fragment}
+ * This is intended to avoid unintentional leakage on {@link Activity} and {@link androidx.fragment.app.Fragment}
  */
 public abstract class WeakRefRunnable<T> extends WeakRefObject<T> implements Runnable {
 
