@@ -206,7 +206,7 @@ public class ApiClient {
                                            @NonNull String id,
                                            @Nullable String query) {
         Call<Void> call = ApiClient.getInstance(context)
-                .registerShare(getServiceIds(context), Integer.valueOf(id), StringConstant.getOrEmpty(query));
+                .registerShare(getServiceIds(context), id, StringConstant.getOrEmpty(query));
         call.enqueue(new VoidCallBack());
         return call;
     }

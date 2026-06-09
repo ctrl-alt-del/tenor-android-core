@@ -34,6 +34,9 @@ public class Result implements IGif {
     @SerializedName("hasaudio")
     private boolean hasAudio;
 
+    @SerializedName("hascaption")
+    private boolean hasCaption;
+
     private String title;
     private String id;
     private List<String> tags;
@@ -58,6 +61,13 @@ public class Result implements IGif {
      */
     public boolean isHasAudio() {
         return hasAudio;
+    }
+
+    /**
+     * @return true if asset contains captions
+     */
+    public boolean isHasCaption() {
+        return hasCaption;
     }
 
     @Nullable

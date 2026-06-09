@@ -169,7 +169,7 @@ public interface IApiClient {
      */
     @GET("registershare")
     Call<Void> registerShare(@QueryMap Map<String, String> serviceIds,
-                             @Query("id") Integer id,
+                              @Query("id") String id,
                              @Query("q") String query);
 
     /**
