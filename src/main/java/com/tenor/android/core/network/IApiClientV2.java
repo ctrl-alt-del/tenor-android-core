@@ -3,8 +3,6 @@ package com.tenor.android.core.network;
 import androidx.annotation.NonNull;
 
 import com.tenor.android.core.constant.AspectRatioRange;
-import com.tenor.android.core.constant.ContentFilter;
-import com.tenor.android.core.constant.MediaFilter;
 import com.tenor.android.core.model.impl.Result;
 import com.tenor.android.core.response.impl.CategoriesResponse;
 import com.tenor.android.core.response.impl.GifsResponse;
