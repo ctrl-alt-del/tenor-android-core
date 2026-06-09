@@ -1,6 +1,6 @@
 package com.tenor.android.core.concurrent;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.Queue;
 

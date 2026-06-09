@@ -1,6 +1,6 @@
 package com.tenor.android.core.weakref;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Interface of {@link WeakRefHandler}

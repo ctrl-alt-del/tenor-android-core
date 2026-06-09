@@ -1,6 +1,6 @@
 package com.tenor.android.core.service;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 

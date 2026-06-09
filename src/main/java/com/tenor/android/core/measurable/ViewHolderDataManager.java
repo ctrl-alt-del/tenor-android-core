@@ -1,7 +1,7 @@
 package com.tenor.android.core.measurable;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.tenor.android.core.concurrent.ConcurrentFifoQueue;
 import com.tenor.android.core.network.ApiClient;

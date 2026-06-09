@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.tenor.android.core.util.AbstractWeakReferenceUtils;
 
@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
 /**
  * {@link HandlerThread} with a {@link WeakReference} on its calling context
  * <p/>
- * This is intended to avoid unintentional leakage on {@link Activity} and {@link android.app.Fragment}
+ * This is intended to avoid unintentional leakage on {@link Activity} and {@link androidx.fragment.app.Fragment}
  */
 public abstract class WeakRefHandlerThread<CTX, H extends Handler> extends HandlerThread
         implements IWeakRefObject<CTX> {
@@ -94,6 +94,9 @@ public abstract class WeakRefHandlerThread<CTX, H extends Handler> extends Handl
      * Cancel all existing tasks
      */
     public void cancelAll() {
-        getHandler().removeCallbacksAndMessages(null);
+        Handler handler = getHandler();
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
+        }
     }
 }

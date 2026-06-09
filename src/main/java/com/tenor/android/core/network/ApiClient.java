@@ -2,11 +2,13 @@ package com.tenor.android.core.network;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.util.ArrayMap;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.collection.ArrayMap;
+
 import android.text.TextUtils;
 
+import com.tenor.android.core.constant.ContentFilter;
 import com.tenor.android.core.constant.ScreenDensity;
 import com.tenor.android.core.constant.StringConstant;
 import com.tenor.android.core.constant.ViewAction;
@@ -31,6 +33,8 @@ import retrofit2.Call;
 public class ApiClient {
 
     private static volatile IApiService<IApiClient> sApiService;
+    @ContentFilter.Value
+    private static volatile String sContentFilter = ContentFilter.OFF;
 
     private static synchronized void init(@NonNull final Context context) {
         init(context, new ApiService.Builder<>(context, IApiClient.class));
@@ -67,6 +71,15 @@ public class ApiClient {
     }
 
     /**
+     * Set the content safety filter level for all API requests
+     *
+     * @param filter one of the options from {@link ContentFilter}
+     */
+    public static void setContentFilter(@ContentFilter.Value String filter) {
+        sContentFilter = filter;
+    }
+
+    /**
      * Retrieve instance of the {@link ApiClient}, and create instance if not already created
      *
      * @return the {@link ApiClient} instance
@@ -98,9 +111,12 @@ public class ApiClient {
      * content delivery experience
      */
     public static Map<String, String> getServiceIds(@NonNull final Context context) {
-        final ArrayMap<String, String> map = new ArrayMap<>(4);
+        final ArrayMap<String, String> map = new ArrayMap<>(5);
 
         // API Key
+        if (sApiService == null) {
+            return new ArrayMap<>(0);
+        }
         map.put("key", sApiService.getApiKey());
 
         /*
@@ -110,6 +126,7 @@ public class ApiClient {
          * 2. `aaid`, Android Advertise Id, is also used in case "keyboardid" or "anon_id" mutates
          * 3. `locale` is used to deliver curated language/regional specific contents to users
          * 4. `screen_density` is used to optimize the content size to the device
+         * 5. `contentfilter` is used to set the content safety filter level
          */
         final String id = AbstractSessionUtils.getAnonId(context);
         map.put(id.length() <= 20 ? "keyboardid" : "anon_id", id);
@@ -119,6 +136,7 @@ public class ApiClient {
         map.put("aaid", AbstractSessionUtils.getAndroidAdvertiseId(context));
         map.put("locale", AbstractLocaleUtils.getCurrentLocaleName(context));
         map.put("screen_density", ScreenDensity.get(context));
+        map.put("contentfilter", sContentFilter);
         return map;
     }
 
@@ -188,7 +206,7 @@ public class ApiClient {
                                            @NonNull String id,
                                            @Nullable String query) {
         Call<Void> call = ApiClient.getInstance(context)
-                .registerShare(getServiceIds(context), Integer.valueOf(id), StringConstant.getOrEmpty(query));
+                .registerShare(getServiceIds(context), id, StringConstant.getOrEmpty(query));
         call.enqueue(new VoidCallBack());
         return call;
     }

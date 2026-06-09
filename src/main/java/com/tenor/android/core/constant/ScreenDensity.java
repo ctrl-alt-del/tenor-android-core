@@ -1,9 +1,9 @@
 package com.tenor.android.core.constant;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringDef;
 import android.util.DisplayMetrics;
 
 import com.tenor.android.core.R;
@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class ScreenDensity {
 
-    @Retention(RetentionPolicy.CLASS)
+    @Retention(RetentionPolicy.SOURCE)
     @StringDef({UNKNOWN, SD_075, SD_100, SD_150, SD_200, SD_300, SD_400})
     public @interface Value {
     }

@@ -1,8 +1,8 @@
 package com.tenor.android.core.response;
 
 import android.os.ResultReceiver;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.tenor.android.core.util.AbstractWeakReferenceUtils;
 

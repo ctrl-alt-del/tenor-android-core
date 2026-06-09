@@ -3,8 +3,8 @@ package com.tenor.android.core.weakref;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.tenor.android.core.util.AbstractWeakReferenceUtils;
 
@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
 /**
  * {@link Handler} with a {@link WeakReference} on its calling context
  * <p/>
- * This is intended to avoid unintentional leakage on {@link Activity} and {@link android.app.Fragment}
+ * This is intended to avoid unintentional leakage on {@link Activity} and {@link androidx.fragment.app.Fragment}
  */
 public class WeakRefHandler<CTX> extends Handler implements IWeakRefObject<CTX> {
 

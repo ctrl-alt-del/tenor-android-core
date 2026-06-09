@@ -1,7 +1,7 @@
 package com.tenor.android.core.presenter.impl;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.tenor.android.core.presenter.IBasePresenter;
 import com.tenor.android.core.response.WeakRefCallback;

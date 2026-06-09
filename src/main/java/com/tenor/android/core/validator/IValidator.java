@@ -1,6 +1,6 @@
 package com.tenor.android.core.validator;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;

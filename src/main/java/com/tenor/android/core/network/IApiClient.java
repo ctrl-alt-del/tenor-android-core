@@ -1,8 +1,8 @@
 package com.tenor.android.core.network;
 
 
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
 
 import com.tenor.android.core.constant.AspectRatioRange;
 import com.tenor.android.core.constant.MediaFilter;
@@ -53,7 +53,7 @@ public interface IApiClient {
                               @Query("limit") int limit,
                               @Query("pos") @NonNull String pos,
                               @Query("media_filter") @MediaFilter.Value String mediaFilter,
-                              @Query("ar_range") String aspectRatioRange);
+                              @Query("ar_range") @AspectRatioRange.Value String aspectRatioRange);
 
     /**
      * Retrieves a set of tags to be displayed as gif categories,
@@ -65,6 +65,7 @@ public interface IApiClient {
      * @return {@link Call}<{@link TagsResponse}>
      */
     @GET("tags")
+    @NonNull
     Call<TagsResponse> getTags(@QueryMap Map<String, String> serviceIds, @Query("type") String type,
                                @Query("timezone") String utcOffset);
 
@@ -76,6 +77,7 @@ public interface IApiClient {
      * @return {@link Call}<{@link EmojiResponse}>
      */
     @GET("tags?platform=android&type=emoji")
+    @NonNull
     Call<EmojiResponse> getEmojiTags(@QueryMap Map<String, String> serviceIds);
 
     /**
@@ -89,11 +91,12 @@ public interface IApiClient {
      * @return {@link Call}<{@link TrendingGifResponse}>
      */
     @GET("trending")
+    @NonNull
     Call<TrendingGifResponse> getTrending(@QueryMap Map<String, String> serviceIds,
                                           @Query("limit") Integer limit,
                                           @Query("pos") String pos,
                                           @Query("media_filter") @MediaFilter.Value String mediaFilter,
-                                          @Query("ar_range") String aspectRatioRange);
+                                          @Query("ar_range") @AspectRatioRange.Value String aspectRatioRange);
 
     /**
      * Retrieves a set of <b>terms</b> a.k.a {@link String} representing those that are currently trending
@@ -103,6 +106,7 @@ public interface IApiClient {
      * @return {@link Call}<{@link TrendingTermResponse}>
      */
     @GET("autocomplete?type=trending")
+    @NonNull
     Call<TrendingTermResponse> getTrending(@QueryMap Map<String, String> serviceIds,
                                            @Query("limit") Integer limit);
 
@@ -116,10 +120,11 @@ public interface IApiClient {
      * @return {@link Call}<{@link GifsResponse}>
      */
     @GET("gifs")
+    @NonNull
     Call<GifsResponse> getGifs(@QueryMap Map<String, String> serviceIds,
                                @Query("ids") String ids,
                                @Query("media_filter") @MediaFilter.Value String mediaFilter,
-                               @Query("ar_range") String aspectRatioRange);
+                               @Query("ar_range") @AspectRatioRange.Value String aspectRatioRange);
 
     /**
      * Search
@@ -131,6 +136,7 @@ public interface IApiClient {
      * @return {@link Call}<{@link SearchSuggestionResponse}>
      */
     @GET("search_suggestions?platform=android")
+    @NonNull
     Call<SearchSuggestionResponse> getSearchSuggestions(@QueryMap Map<String, String> serviceIds,
                                                         @Query("tag") String tag,
                                                         @Query("limit") @IntRange(from = 1, to = 50) Integer limit);
@@ -144,14 +150,17 @@ public interface IApiClient {
      * @return {@link Call}<{@link GifsResponse}>
      */
     @GET("user")
+    @NonNull
     Call<GifsResponse> getUserGifs(@QueryMap Map<String, String> serviceIds,
                                    @Query("id") String userId,
                                    @Query("access_token") String accessToken);
 
     @HEAD
+    @NonNull
     Call<Void> getImageSize(@Url String imageUrl);
 
     @GET("suggest")
+    @NonNull
     Call<Suggestions> getSuggestions(@QueryMap Map<String, String> serviceIds,
                                      @Query("tag") String tag,
                                      @Query("limit") Integer limit,
@@ -168,8 +177,9 @@ public interface IApiClient {
      * @return {@link Call}<{@link Void}>
      */
     @GET("registershare")
+    @NonNull
     Call<Void> registerShare(@QueryMap Map<String, String> serviceIds,
-                             @Query("id") Integer id,
+                              @Query("id") String id,
                              @Query("q") String query);
 
     /**
@@ -181,6 +191,7 @@ public interface IApiClient {
      * @return {@link Call}<{@link Void}>
      */
     @GET("registersearch")
+    @NonNull
     Call<Void> registerSearch(@QueryMap Map<String, String> serviceIds,
                               @Query("q") String query,
                               @Query("pos") String pos);
@@ -193,11 +204,13 @@ public interface IApiClient {
      * @return {@link Call}<{@link AnonIdResponse}>
      */
     @GET("anonid?platform=android")
+    @NonNull
     Call<AnonIdResponse> getAnonId(@Query("key") String apiKey,
                                    @Query("locale") String locale);
 
 
     @GET("pack")
+    @NonNull
     Call<PackResponse> getPack(@Query("key") String apiKey,
                                @Query("publicid") String publicId);
 
