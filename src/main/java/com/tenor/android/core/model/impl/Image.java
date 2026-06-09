@@ -17,6 +17,8 @@ public class Image implements Serializable {
 
     @SerializedName("dims")
     private int[] dimensions;
+    @SerializedName("size")
+    private int size;
 
     /**
      * @return url of the raw asset
@@ -32,6 +34,13 @@ public class Image implements Serializable {
 
     public int getHeight() {
         return dimensions != null && dimensions.length == 2 ? dimensions[1] : -1;
+    }
+
+    /**
+     * @return size of file in bytes
+     */
+    public int getSize() {
+        return size;
     }
 
     /**
