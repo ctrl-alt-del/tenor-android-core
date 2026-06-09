@@ -13,7 +13,9 @@ import com.tenor.android.core.validator.ColorHex;
 import com.tenor.android.core.validator.FloatString;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The model of {@link Result}
@@ -25,6 +27,9 @@ public class Result implements IGif {
 
     @SerializedName("media")
     private List<MediaCollection> medias;
+
+    @SerializedName("media_formats")
+    private Map<String, Media> mediaFormats;
 
     private double created;
     private int shares;
@@ -102,6 +107,21 @@ public class Result implements IGif {
     @NonNull
     public List<MediaCollection> getMedias() {
         return !AbstractListUtils.isEmpty(medias) ? medias : Collections.<MediaCollection>emptyList();
+    }
+
+    /**
+     * @return true if this result came from a v2 API response
+     */
+    public boolean isV2() {
+        return mediaFormats != null;
+    }
+
+    /**
+     * @return v2 media formats as a map of format name to {@link Media}
+     */
+    @NonNull
+    public Map<String, Media> getMediaFormats() {
+        return mediaFormats != null ? mediaFormats : new HashMap<String, Media>();
     }
 
     /**
