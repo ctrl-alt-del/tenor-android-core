@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.tenor.android.core.constant.ApiVersion;
 import com.tenor.android.core.constant.StringConstant;
 import com.tenor.android.core.network.constant.Protocol;
 import com.tenor.android.core.network.constant.Protocols;
@@ -138,6 +139,16 @@ public class ApiService<T> implements IApiService<T> {
          */
         IBuilder<T> endpoint(@NonNull String endpoint);
 
+        /**
+         * Set API version
+         * <p>
+         * Default is {@link ApiVersion#V1}. Set to {@link ApiVersion#V2} to use
+         * the current Tenor API.
+         *
+         * @param version {@link ApiVersion}
+         */
+        IBuilder<T> apiVersion(@NonNull ApiVersion version);
+
         IApiService<T> build();
     }
 
@@ -153,7 +164,9 @@ public class ApiService<T> implements IApiService<T> {
         @NonNull
         private String serverName = SERVER_NAME;
         @NonNull
-        private String endpoint = String.format(API_ENDPOINT_FORMATTER, protocol, serverName);
+        private ApiVersion apiVersion = ApiVersion.V1;
+        @NonNull
+        private String endpoint = String.format(apiVersion.getEndpointFormat(), protocol, serverName);
         @IntRange(from = 0, to = 30)
         private int timeout = 15;
         @NonNull
@@ -199,7 +212,7 @@ public class ApiService<T> implements IApiService<T> {
         @Override
         public IBuilder<T> protocol(@Protocol String protocol) {
             this.protocol = Protocols.getOrHttps(protocol);
-            this.endpoint = String.format(API_ENDPOINT_FORMATTER, this.protocol, this.serverName);
+            this.endpoint = String.format(this.apiVersion.getEndpointFormat(), this.protocol, this.serverName);
             return this;
         }
 
@@ -213,7 +226,7 @@ public class ApiService<T> implements IApiService<T> {
         @Override
         public IBuilder<T> server(@NonNull String server) {
             this.serverName = !TextUtils.isEmpty(server) ? server : SERVER_NAME;
-            this.endpoint = String.format(API_ENDPOINT_FORMATTER, this.protocol, this.serverName);
+            this.endpoint = String.format(this.apiVersion.getEndpointFormat(), this.protocol, this.serverName);
             return this;
         }
 
@@ -258,6 +271,13 @@ public class ApiService<T> implements IApiService<T> {
             if (!TextUtils.isEmpty(endpoint)) {
                 this.endpoint = endpoint;
             }
+            return this;
+        }
+
+        @Override
+        public IBuilder<T> apiVersion(@NonNull ApiVersion version) {
+            this.apiVersion = version;
+            this.endpoint = String.format(version.getEndpointFormat(), this.protocol, this.serverName);
             return this;
         }
 
