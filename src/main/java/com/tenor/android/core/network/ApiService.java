@@ -146,7 +146,7 @@ public class ApiService<T> implements IApiService<T> {
         private static final long serialVersionUID = -3581428418516126896L;
 
         protected static final String API_ENDPOINT_FORMATTER = "%1$s://%2$s.tenor.com/v1/";
-        protected static final String SERVER_NAME = "api";
+        protected static final String SERVER_NAME = "g";
 
         @Protocol
         private String protocol = Protocols.HTTPS;
