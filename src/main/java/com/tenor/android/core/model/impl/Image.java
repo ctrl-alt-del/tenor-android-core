@@ -17,6 +17,7 @@ public class Image implements Serializable {
 
     @SerializedName("dims")
     private int[] dimensions;
+    @SerializedName("size")
     private int size;
 
     /**

@@ -1,6 +1,7 @@
 package com.tenor.android.core.network;
 
 import android.content.Context;
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.collection.ArrayMap;
@@ -20,6 +21,8 @@ import retrofit2.Call;
  * V2 API Client for retrieving content via the v2 Tenor API
  */
 public class ApiClientV2 {
+
+    private static final String TAG = "ApiClientV2";
 
     private static volatile IApiService<IApiClientV2> sApiService;
     @ContentFilter.Value
@@ -119,6 +122,9 @@ public class ApiClientV2 {
         }
         map.put("key", sApiService.getApiKey());
         map.put("client_key", sClientKey);
+        if (TextUtils.isEmpty(sClientKey)) {
+            Log.w(TAG, "client_key is not set; v2 API requests may be rejected");
+        }
         map.put("country", sCountry);
         map.put("locale", AbstractLocaleUtils.getCurrentLocaleName(context));
         map.put("contentfilter", sContentFilter);

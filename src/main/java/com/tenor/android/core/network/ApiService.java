@@ -156,8 +156,7 @@ public class ApiService<T> implements IApiService<T> {
 
         private static final long serialVersionUID = -3581428418516126896L;
 
-        protected static final String API_ENDPOINT_FORMATTER = "%1$s://%2$s.tenor.com/v1/";
-        protected static final String SERVER_NAME = "g";
+        protected static final String SERVER_NAME = ApiVersion.V1.getDefaultServer();
 
         @Protocol
         private String protocol = Protocols.HTTPS;
@@ -277,6 +276,7 @@ public class ApiService<T> implements IApiService<T> {
         @Override
         public IBuilder<T> apiVersion(@NonNull ApiVersion version) {
             this.apiVersion = version;
+            this.serverName = version.getDefaultServer();
             this.endpoint = String.format(version.getEndpointFormat(), this.protocol, this.serverName);
             return this;
         }

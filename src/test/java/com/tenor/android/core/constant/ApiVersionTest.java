@@ -20,12 +20,22 @@ public class ApiVersionTest {
 
     @Test
     public void testV2EndpointFormat() {
-        // V2 format has no placeholders — it's a fixed URL
-        String v2Url = String.format(ApiVersion.V2.getEndpointFormat());
+        // V2 default: protocol=https, server=tenor
+        String v2Url = String.format(ApiVersion.V2.getEndpointFormat(), "https", "tenor");
         assertEquals("https://tenor.googleapis.com/v2/", v2Url);
 
-        // Extra args (as passed by ApiService.Builder) are harmlessly ignored
-        String v2UrlWithArgs = String.format(ApiVersion.V2.getEndpointFormat(), "https", "g");
-        assertEquals("https://tenor.googleapis.com/v2/", v2UrlWithArgs);
+        // protocol override still works for v2
+        String v2UrlHttp = String.format(ApiVersion.V2.getEndpointFormat(), "http", "tenor");
+        assertEquals("http://tenor.googleapis.com/v2/", v2UrlHttp);
+
+        // staging: change the host prefix via server
+        String v2UrlStaging = String.format(ApiVersion.V2.getEndpointFormat(), "https", "staging-tenor");
+        assertEquals("https://staging-tenor.googleapis.com/v2/", v2UrlStaging);
+    }
+
+    @Test
+    public void testDefaultServer() {
+        assertEquals("g", ApiVersion.V1.getDefaultServer());
+        assertEquals("tenor", ApiVersion.V2.getDefaultServer());
     }
 }
