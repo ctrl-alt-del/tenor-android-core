@@ -1,16 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <application>
         <service
             android:name="com.tenor.android.core.service.AaidServiceApi26"
-            android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service
             android:name="com.tenor.android.core.service.AaidServiceCompat"
-            android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 </manifest>
