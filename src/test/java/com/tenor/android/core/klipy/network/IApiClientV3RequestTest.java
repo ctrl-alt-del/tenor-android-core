@@ -1,11 +1,10 @@
-package com.tenor.android.core.network;
+package com.tenor.android.core.klipy.network;
 
-import com.google.gson.Gson;
 import com.tenor.android.core.constant.ContentFilter;
-import com.tenor.android.core.model.impl.klipy.KlipyCategoriesData;
-import com.tenor.android.core.model.impl.klipy.KlipyResponse;
-import com.tenor.android.core.model.impl.klipy.KlipyResult;
-import com.tenor.android.core.model.impl.klipy.KlipySearchData;
+import com.tenor.android.core.klipy.model.KlipyCategoriesData;
+import com.tenor.android.core.klipy.model.KlipyResponse;
+import com.tenor.android.core.klipy.model.KlipyResult;
+import com.tenor.android.core.klipy.model.KlipySearchData;
 
 import org.junit.After;
 import org.junit.Before;

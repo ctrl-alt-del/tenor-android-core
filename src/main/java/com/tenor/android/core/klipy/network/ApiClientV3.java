@@ -1,4 +1,4 @@
-package com.tenor.android.core.network;
+package com.tenor.android.core.klipy.network;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,9 +11,14 @@ import android.text.TextUtils;
 import com.tenor.android.core.constant.ApiVersion;
 import com.tenor.android.core.constant.ContentFilter;
 import com.tenor.android.core.constant.StringConstant;
+import com.tenor.android.core.klipy.model.KlipyResponse;
+import com.tenor.android.core.network.ApiService;
+import com.tenor.android.core.network.IApiService;
 import com.tenor.android.core.util.AbstractLocaleUtils;
 
 import java.util.Map;
+
+import com.tenor.android.core.klipy.model.KlipyResponse;
 
 import retrofit2.Call;
 
@@ -37,6 +42,9 @@ public class ApiClientV3 {
      */
     public static synchronized void init(@NonNull Context context, @NonNull String appKey) {
         if (sApiService == null) {
+            if ("YOUR_APP_KEY".equals(appKey)) {
+                Log.w(TAG, "appKey is still the default placeholder; API requests will fail");
+            }
             sApiService = new ApiService.Builder<>(context, IApiClientV3.class)
                     .apiVersion(ApiVersion.V3)
                     .server(appKey)
@@ -103,21 +111,21 @@ public class ApiClientV3 {
      * @param query   the search query that led to this share
      * @return {@link Call}
      */
-    public static Call<com.tenor.android.core.model.impl.klipy.KlipyResponse<Void>> registerShare(
+    public static Call<KlipyResponse<Void>> registerShare(
             @NonNull Context context, long id, @Nullable String query) {
         Map<String, String> ids = getServiceIds(context);
-        Call<com.tenor.android.core.model.impl.klipy.KlipyResponse<Void>> call = getInstance()
+        Call<KlipyResponse<Void>> call = getInstance()
                 .postShareTrigger(id, query,
                         ids.get("customer_id") != null ? ids.get("customer_id") : "",
                         ids.get("locale") != null ? ids.get("locale") : "en_US");
-        call.enqueue(new retrofit2.Callback<com.tenor.android.core.model.impl.klipy.KlipyResponse<Void>>() {
+        call.enqueue(new retrofit2.Callback<KlipyResponse<Void>>() {
             @Override
-            public void onResponse(retrofit2.Call<com.tenor.android.core.model.impl.klipy.KlipyResponse<Void>> c,
-                                   retrofit2.Response<com.tenor.android.core.model.impl.klipy.KlipyResponse<Void>> r) {
+            public void onResponse(retrofit2.Call<KlipyResponse<Void>> c,
+                                   retrofit2.Response<KlipyResponse<Void>> r) {
             }
 
             @Override
-            public void onFailure(retrofit2.Call<com.tenor.android.core.model.impl.klipy.KlipyResponse<Void>> c,
+            public void onFailure(retrofit2.Call<KlipyResponse<Void>> c,
                                   Throwable t) {
             }
         });

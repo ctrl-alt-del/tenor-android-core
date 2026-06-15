@@ -1,11 +1,11 @@
-package com.tenor.android.core.network;
+package com.tenor.android.core.klipy.network;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.tenor.android.core.model.impl.klipy.KlipyCategoriesData;
-import com.tenor.android.core.model.impl.klipy.KlipyResponse;
-import com.tenor.android.core.model.impl.klipy.KlipySearchData;
+import com.tenor.android.core.klipy.model.KlipyCategoriesData;
+import com.tenor.android.core.klipy.model.KlipyResponse;
+import com.tenor.android.core.klipy.model.KlipySearchData;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

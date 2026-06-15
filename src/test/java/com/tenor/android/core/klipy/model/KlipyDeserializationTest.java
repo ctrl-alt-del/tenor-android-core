@@ -1,7 +1,7 @@
-package com.tenor.android.core.model.klipy;
+package com.tenor.android.core.klipy.model;
 
 import com.google.gson.Gson;
-import com.tenor.android.core.model.impl.klipy.*;
+import com.tenor.android.core.klipy.model.*;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.tenor.android.core.model.impl.klipy;
+package com.tenor.android.core.klipy.model;
 
 import java.io.Serializable;
 
