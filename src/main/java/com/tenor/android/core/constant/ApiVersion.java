@@ -26,7 +26,7 @@ public enum ApiVersion {
     /** Tenor v2 API endpoint ({@code https://tenor.googleapis.com/v2/}) */
     V2("%1$s://%2$s.googleapis.com/v2/", "tenor"),
     /** Klipy v3 API endpoint ({@code https://api.klipy.com/api/v1/}) */
-    V3("%1$s://api.klipy.com/api/v1/%2$s/", "YOUR_APP_KEY");
+    V3("%1$s://api.klipy.com/api/v1/%2$s/", "");
 
     private final String mEndpointFormat;
     private final String mDefaultServer;

@@ -4,3 +4,8 @@
 /.idea
 .DS_Store
 *.iml
+.claude/
+*.aar
+*.log
+/captures/
+/out/

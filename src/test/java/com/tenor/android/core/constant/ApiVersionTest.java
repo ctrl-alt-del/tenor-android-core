@@ -29,13 +29,14 @@ public class ApiVersionTest {
         assertEquals("http://tenor.googleapis.com/v2/", v2UrlHttp);
 
         // staging: change the host prefix via server
-        String v2UrlStaging = String.format(ApiVersion.V2.getEndpointFormat(), "https", "staging-tenor");
-        assertEquals("https://staging-tenor.googleapis.com/v2/", v2UrlStaging);
+        String v2UrlStaging = String.format(ApiVersion.V2.getEndpointFormat(), "https", "test-server");
+        assertEquals("https://test-server.googleapis.com/v2/", v2UrlStaging);
     }
 
     @Test
     public void testDefaultServer() {
         assertEquals("g", ApiVersion.V1.getDefaultServer());
         assertEquals("tenor", ApiVersion.V2.getDefaultServer());
+        assertEquals("", ApiVersion.V3.getDefaultServer());
     }
 }

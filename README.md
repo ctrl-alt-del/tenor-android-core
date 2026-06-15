@@ -30,7 +30,7 @@ To embed the `tenor-android-core.aar` file as a module, right-click the project 
 Once the file has been imported, you will need to include the `tenor-android-core` module as a dependency of any module that will use the core. Add the following lines to the `build.gradle` files of these modules:
 ```java
     dependencies {
-        compile project(':tenor-android-core')
+        implementation project(':tenor-android-core')
     }
 ```
 
@@ -46,7 +46,7 @@ This approach requires some additional setup on the `build.gradle` file of your 
     }
 
     dependencies {
-      compile(name: 'tenor-android-core', ext: 'aar') {
+      implementation(name: 'tenor-android-core', ext: 'aar') {
           transitive = true
       }
     }
@@ -55,9 +55,11 @@ This approach requires some additional setup on the `build.gradle` file of your 
 ### Additional Required Dependencies 
 For either of the import options used, you will also need to add the following dependencies to every module where `tenor-android-core` has been added, in order to use the full functionality of the Tenor Android Core:  
 ```java
-  compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-  compile 'com.github.bumptech.glide:glide:3.8.0'
-  compile 'com.android.support:support-annotations:26.1.0'
+  implementation 'com.squareup.retrofit2:converter-gson:3.0.0'
+  implementation 'com.github.bumptech.glide:glide:5.0.7'
+  implementation 'androidx.annotation:annotation-jvm:1.10.0'
+  implementation 'androidx.recyclerview:recyclerview:1.4.0'
+  compileOnly 'com.google.android.gms:play-services-ads-identifier:18.1.0'
 ```
 
 

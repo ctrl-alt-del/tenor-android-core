@@ -1,7 +1,6 @@
 package com.tenor.android.core.klipy.network;
 
 import android.content.Context;
-import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.collection.ArrayMap;
@@ -15,6 +14,7 @@ import com.tenor.android.core.klipy.model.KlipyResponse;
 import com.tenor.android.core.network.ApiService;
 import com.tenor.android.core.network.IApiService;
 import com.tenor.android.core.util.AbstractLocaleUtils;
+import com.tenor.android.core.util.SdkLog;
 
 import java.util.Map;
 
@@ -42,8 +42,8 @@ public class ApiClientV3 {
      */
     public static synchronized void init(@NonNull Context context, @NonNull String appKey) {
         if (sApiService == null) {
-            if ("YOUR_APP_KEY".equals(appKey)) {
-                Log.w(TAG, "appKey is still the default placeholder; API requests will fail");
+            if (TextUtils.isEmpty(appKey)) {
+                throw new IllegalArgumentException("appKey must not be empty");
             }
             sApiService = new ApiService.Builder<>(context, IApiClientV3.class)
                     .apiVersion(ApiVersion.V3)
@@ -98,7 +98,7 @@ public class ApiClientV3 {
         if (!TextUtils.isEmpty(sCustomerId)) {
             map.put("customer_id", sCustomerId);
         } else {
-            Log.w(TAG, "customer_id is not set; user-specific features will be unavailable");
+            SdkLog.w(TAG, "customer_id is not set; user-specific features will be unavailable");
         }
         return map;
     }
