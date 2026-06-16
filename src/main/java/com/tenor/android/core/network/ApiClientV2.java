@@ -1,7 +1,6 @@
 package com.tenor.android.core.network;
 
 import android.content.Context;
-import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.collection.ArrayMap;
@@ -12,6 +11,7 @@ import com.tenor.android.core.constant.ApiVersion;
 import com.tenor.android.core.constant.ContentFilter;
 import com.tenor.android.core.constant.StringConstant;
 import com.tenor.android.core.util.AbstractLocaleUtils;
+import com.tenor.android.core.util.SdkLog;
 
 import java.util.Map;
 
@@ -123,7 +123,7 @@ public class ApiClientV2 {
         map.put("key", sApiService.getApiKey());
         map.put("client_key", sClientKey);
         if (TextUtils.isEmpty(sClientKey)) {
-            Log.w(TAG, "client_key is not set; v2 API requests may be rejected");
+            SdkLog.w(TAG, "client_key is not set; v2 API requests may be rejected");
         }
         map.put("country", sCountry);
         map.put("locale", AbstractLocaleUtils.getCurrentLocaleName(context));
