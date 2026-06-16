@@ -1,10 +1,12 @@
 package com.tenor.android.core.loader;
 
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.target.CustomViewTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -22,9 +24,13 @@ public class GlideLoader {
     }
 
     public static <T extends ImageView> void load(@NonNull final RequestBuilder<Drawable> requestBuilder,
-                                                  @NonNull final GlideTaskParams<T> payload) {
+                                                   @NonNull final GlideTaskParams<T> payload) {
 
-        if (payload.isThumbnail()) {
+        if (!TextUtils.isEmpty(payload.getThumbnailUrl())) {
+            RequestBuilder<Drawable> thumbRequest = Glide.with(payload.getTarget().getContext())
+                    .load(payload.getThumbnailUrl());
+            requestBuilder.thumbnail(thumbRequest);
+        } else if (payload.isThumbnail()) {
             requestBuilder.thumbnail(payload.getThumbnailMultiplier());
         }
 
@@ -47,6 +53,7 @@ public class GlideLoader {
 
                     @Override
                     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        payload.getTarget().setImageDrawable(resource);
                         payload.getListener().success(payload.getTarget(), resource);
                     }
                 });

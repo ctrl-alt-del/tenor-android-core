@@ -2,6 +2,7 @@ package com.tenor.android.core.loader;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.request.target.Target;
@@ -18,6 +19,8 @@ public class GlideTaskParams<T extends ImageView> extends DrawableLoaderTaskPara
     private Media mMedia;
 
     private float mThumbnailMultiplier = 1f;
+    @Nullable
+    private String mThumbnailUrl;
     private int mCurrentRetry;
     private int mMaxRetry = 3;
 
@@ -79,6 +82,26 @@ public class GlideTaskParams<T extends ImageView> extends DrawableLoaderTaskPara
     public GlideTaskParams<T> setThumbnailMultiplier(float multiplier) {
         if (multiplier >= 0f && multiplier <= 1f) {
             mThumbnailMultiplier = multiplier;
+        }
+        return this;
+    }
+
+    @Nullable
+    public String getThumbnailUrl() {
+        return mThumbnailUrl;
+    }
+
+    /**
+     * Set a thumbnail URL to load as a fast placeholder while the
+     * full-size GIF decodes. When set, Glide loads this URL first
+     * via {@code requestBuilder.thumbnail(thumbRequest)}.
+     * <p>
+     * Prefer this over {@link #setThumbnailMultiplier(float)} when
+     * a separate low-resolution URL is available (e.g. Klipy xs tier).
+     */
+    public GlideTaskParams<T> setThumbnailUrl(@Nullable String url) {
+        if (!TextUtils.isEmpty(url)) {
+            mThumbnailUrl = url;
         }
         return this;
     }
