@@ -7,11 +7,11 @@ android {
     def vMajor = 0 // range between [0,+INF)
     def vMinor = 5 // range between [0,9]
     def vPatch = 1 // range between [0,99]
-    compileSdkVersion 37
+    compileSdkVersion 35
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 37
+        targetSdkVersion 35
         versionCode vMajor * 1000 + vMinor * 100 + vPatch
         versionName "${vMajor}.${vMinor}.${vPatch}"
     }
